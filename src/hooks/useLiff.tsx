@@ -54,14 +54,14 @@ export const useLiff = (message?): UseLiff => {
   },[]);
 
   return {
-    idToken: liff.getIDToken(),
     initialized: true,
     isInClient: liff.isInClient(),
     loggedIn: liff.isLoggedIn(),
     closeWindow: liff.closeWindow,
     isExpire: isExpire,
+    idToken: liff.getIDToken(),
     login: liff.login,
-    logout: liff.login,
+    logout: liff.logout,
     userId: liff.getProfile(),
     scanCode: liff.scanCodeV2(),
     sendMessage: liff.sendMessages(message),
