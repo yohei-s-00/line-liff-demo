@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 import type { AppProps } from 'next/app'
 import { FC } from 'react'
-import { useLiff, LiffProvider } from "../hooks/useliff";
+import { useLiff, LiffProvider } from "../hooks/useLiff";
 
 
 const Layout: FC = ({ children }) => {
