@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useLiff } from "../hooks/useLiff";
 
 
-export default function Home() {
+const Home = () => {
   const [value,setValue] = useState('');
   const { loggedIn, userId, scanCode} = useLiff();
   const handleClick = () => {
@@ -42,3 +42,4 @@ export default function Home() {
     </div>
   );
 }
+export default Home;
