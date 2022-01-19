@@ -55,10 +55,10 @@ export const useLiff = (message?): UseLiff => {
 
   return {
     initialized: true,
-    isInClient: liff.isInClient(),
-    loggedIn: liff.isLoggedIn(),
-    closeWindow: liff.closeWindow,
     isExpire: isExpire,
+    loggedIn: liff.isLoggedIn(),
+    isInClient: liff.isInClient(),
+    closeWindow: liff.closeWindow,
     idToken: liff.getIDToken(),
     login: liff.login,
     logout: liff.logout,
