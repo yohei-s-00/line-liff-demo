@@ -1,15 +1,13 @@
 import Head from "next/head";
 import Link from 'next/link'
-import liff from "@line/liff";
-// import { useEffect, useState } from "react";
-import { useAuth } from "../hooks/auth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLiff } from "../hooks/useliff";
 
 export default function Home() {
   const [value,setValue] = useState('');
-  const { loggedIn, userId } = useAuth();
+  const { loggedIn, userId, scanCode} = useLiff();
   const handleClick = () => {
-    liff.scanCodeV2()
+    scanCode
     .then((result) => {
       setValue(result.value);
     })
