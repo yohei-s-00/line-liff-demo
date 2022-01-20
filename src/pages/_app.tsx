@@ -1,12 +1,10 @@
 import "../styles/globals.css";
-import type { AppProps } from 'next/app'
-import { FC } from 'react'
-import { useAuth, AuthProvider } from "../hooks/useAuth";
-import { LiffProvider } from "../hooks/useLiff";
-
+import type { AppProps } from "next/app";
+import { FC } from "react";
+import { LiffProvider, useLiff } from "../hooks/useLiff";
 
 const Layout: FC = ({ children }) => {
-  const { initialized, loggedIn, login } = useAuth();
+  const { initialized, loggedIn, login } = useLiff();
 
   if (!initialized) {
     return <p>loading...</p>;
@@ -21,13 +19,11 @@ const Layout: FC = ({ children }) => {
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <AuthProvider>
-      <LiffProvider>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </LiffProvider>
-    </AuthProvider>
+    <LiffProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </LiffProvider>
   );
 }
 
