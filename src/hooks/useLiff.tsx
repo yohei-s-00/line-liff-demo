@@ -123,7 +123,7 @@ export const LiffProvider: FC = ({ children }) => {
   return <LiffContext.Provider value={liff}>{children}</LiffContext.Provider>;
 };
 
-export const useLiff = (message?: LiffMessage[]): UseLiff => {
+export const useLiff = (): UseLiff => {
   const liff = useContext(LiffContext);
   if (!liff) {
     return {
@@ -140,32 +140,29 @@ export const useLiff = (message?: LiffMessage[]): UseLiff => {
     const expirationTime = liff.getDecodedIDToken().exp;
     return expirationTime < Date.now() / 1000;
   };
-  if (!liff.isLoggedIn()) {
-    return {
-      initialized: true,
-      isExpire: isExpire,
-      loggedIn: liff.isLoggedIn(),
-      isInClient: liff.isInClient(),
-      closeWindow: liff.closeWindow,
-      idToken: liff.getIDToken(),
-      login: liff.login,
-      logout: liff.logout,
-      AccessToken: liff.getAccessToken(),
-    };
-  } else {
-    return {
-      initialized: true,
-      isExpire: isExpire,
-      loggedIn: liff.isLoggedIn(),
-      isInClient: liff.isInClient(),
-      closeWindow: liff.closeWindow,
-      idToken: liff.getIDToken(),
-      login: liff.login,
-      logout: liff.logout,
-      AccessToken: liff.getAccessToken(),
-      userId: liff.getProfile(),
-      scanCode: liff.scanCodeV2(),
-      sendMessages: liff.sendMessages(message),
-    };
-  }
+  return {
+    initialized: true,
+    isExpire: isExpire,
+    loggedIn: liff.isLoggedIn(),
+    isInClient: liff.isInClient(),
+    closeWindow: liff.closeWindow,
+    idToken: liff.getIDToken(),
+    login: liff.login,
+    logout: liff.logout,
+    AccessToken: liff.getAccessToken(),
+  };
+  // return {
+  //   initialized: true,
+  //   isExpire: isExpire,
+  //   loggedIn: liff.isLoggedIn(),
+  //   isInClient: liff.isInClient(),
+  //   closeWindow: liff.closeWindow,
+  //   idToken: liff.getIDToken(),
+  //   login: liff.login,
+  //   logout: liff.logout,
+  //   AccessToken: liff.getAccessToken(),
+  //   userId: liff.getProfile(),
+  //   scanCode: liff.scanCodeV2(),
+  //   sendMessages: liff.sendMessages(message),
+  // };
 };
