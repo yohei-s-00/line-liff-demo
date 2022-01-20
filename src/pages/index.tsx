@@ -14,14 +14,14 @@ const Home = () => {
     statusMessage: '',
   }
   const { loggedIn, closeWindow, isInClient } = useLiff();
-  const [value, setValue] = useState<ScanCodeResult>(null);
+  const [value, setValue] = useState<string>(null);
   const [userProfile, setUserProfile] = useState<Profile>(initialUser);
   const liff = useContext(LiffContext);
   const handleClick = () => {
     liff
       .scanCodeV2()
       .then((result) => {
-        setValue(result);
+        setValue(result.value);
       })
       .catch(console.error);
   };
