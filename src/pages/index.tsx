@@ -7,9 +7,15 @@ import type { Profile, ScanCodeResult } from '../libs/type/type'
 import noImage from '../../public/no_image.png'
 
 const Home = () => {
+  const initialUser = {
+    userId: '',
+    displayName: '',
+    pictureUrl: '',
+    statusMessage: '',
+  }
   const { loggedIn, closeWindow, isInClient } = useLiff();
   const [value, setValue] = useState<ScanCodeResult>(null);
-  const [userProfile, setUserProfile] = useState<Profile>(undefined);
+  const [userProfile, setUserProfile] = useState<Profile>(initialUser);
   const handleClick = () => {
     const liff = useContext(LiffContext);
     liff
@@ -49,9 +55,9 @@ const Home = () => {
           <button onClick={closeWindow}>閉じる</button>
         </p>
         <p>{isInClient && "クライアント"}</p>
-        <p>{userProfile.userId && userProfile.userId}</p>
-        <p>{userProfile.displayName && userProfile.displayName}</p>
-        {userProfile.statusMessage && <p>{userProfile.statusMessage}</p>}
+        <p>{userProfile.userId}</p>
+        <p>{userProfile.displayName}</p>
+        <p>{userProfile.statusMessage}</p>
         <Image 
           src={noImage}
           width={100}
