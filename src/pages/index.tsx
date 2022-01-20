@@ -6,16 +6,8 @@ import { useLiff } from "../hooks/useLiff";
 
 const Home = () => {
   const [value,setValue] = useState('');
-  const { loggedIn, userId, scanCode} = useLiff();
-  const handleClick = () => {
-    scanCode
-    .then((result) => {
-      setValue(result.value);
-    })
-    .catch((err) => {
-        console.log(err);
-    });
-  }
+  const { loggedIn, userId, } = useLiff();
+  
 
   return (
     <div>
@@ -33,10 +25,7 @@ const Home = () => {
           <Link href="/sub">sub page</Link>
         </p>
         <p>
-          <button onClick={handleClick}>二次元コードリーダーを表示する</button>
-        </p>
-        <p>
-          {value}
+          <button>二次元コードリーダーを表示する</button>
         </p>
       </main>
     </div>
