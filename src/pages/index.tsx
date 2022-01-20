@@ -1,13 +1,21 @@
 import Head from "next/head";
-import Link from 'next/link'
-import { useEffect, useState } from "react";
-import { useLiff } from "../hooks/useLiff";
-
+import Link from "next/link";
+import { useEffect, useState, useContext } from "react";
+import { useLiff, LiffContext } from "../hooks/useLiff";
+import type Liff from "@line/liff";
 
 const Home = () => {
-  const [value,setValue] = useState('');
-  const { loggedIn, userId, } = useLiff();
-  
+  const [value, setValue] = useState("");
+  const { loggedIn, userId } = useLiff();
+  const handleClick = () => {
+    const liff = useContext(LiffContext);
+    liff
+      .scanCodeV2()
+      .then((result) => {
+        setValue(result.value);
+      })
+      .catch(console.error);
+  };
 
   return (
     <div>
@@ -25,10 +33,10 @@ const Home = () => {
           <Link href="/sub">sub page</Link>
         </p>
         <p>
-          <button>二次元コードリーダーを表示する</button>
+          <button onClick={handleClick}>二次元コードリーダーを表示する</button>
         </p>
       </main>
     </div>
   );
-}
+};
 export default Home;

@@ -100,7 +100,7 @@ type UseLiff = {
   sendMessages?: Promise<void>;
 };
 
-const LiffContext = createContext<typeof Liff>(undefined);
+export const LiffContext = createContext<typeof Liff>(undefined);
 
 export const LiffProvider: FC = ({ children }) => {
   const [liff, setLiff] = useState<typeof Liff>(undefined);
