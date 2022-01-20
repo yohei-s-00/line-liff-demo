@@ -49,8 +49,8 @@ const Home = () => {
           <button onClick={closeWindow}>閉じる</button>
         </p>
         <p>{isInClient && "クライアント"}</p>
-        <p>{userProfile.userId}</p>
-        <p>{userProfile.displayName}</p>
+        <p>{userProfile.userId && userProfile.userId}</p>
+        <p>{userProfile.displayName && userProfile.displayName}</p>
         {userProfile.statusMessage && <p>{userProfile.statusMessage}</p>}
         <Image 
           src={noImage}
