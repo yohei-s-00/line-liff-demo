@@ -7,7 +7,7 @@ import type { Profile, ScanCodeResult } from '../libs/type/type'
 import noImage from '../../public/no_image.png'
 
 const Home = () => {
-  const { loggedIn, userId, closeWindow, isInClient } = useLiff();
+  const { loggedIn, closeWindow, isInClient } = useLiff();
   const [value, setValue] = useState<ScanCodeResult>(null);
   const [userProfile, setUserProfile] = useState<Profile>(undefined);
   const handleClick = () => {
@@ -36,7 +36,6 @@ const Home = () => {
       </Head>
       <main>
         <h1>index page</h1>
-        {loggedIn && <p>{userId}</p>}
         <p>
           <button>{loggedIn ? "Log out" : "Log in"}</button>
         </p>
