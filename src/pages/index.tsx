@@ -16,8 +16,8 @@ const Home = () => {
   const { loggedIn, closeWindow, isInClient } = useLiff();
   const [value, setValue] = useState<ScanCodeResult>(null);
   const [userProfile, setUserProfile] = useState<Profile>(initialUser);
+  const liff = useContext(LiffContext);
   const handleClick = () => {
-    const liff = useContext(LiffContext);
     liff
       .scanCodeV2()
       .then((result) => {
@@ -26,7 +26,6 @@ const Home = () => {
       .catch(console.error);
   };
   const getUserProfile = async () => {
-    const liff = useContext(LiffContext);
     const profile = await liff.getProfile();
     setUserProfile(profile);
   };
